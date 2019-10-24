@@ -10,7 +10,7 @@ public class IndiaData {
 	private Long id;
 	private String Title;
 	private Float Upvote_Ratio;
-	private String Topic;
+	private String Keyword;
 	private Float Sentiment;
 	private String Date;
 	
@@ -32,11 +32,11 @@ public class IndiaData {
 	public void setUpvote_Ratio(Float upvote_Ratio) {
 		Upvote_Ratio = upvote_Ratio;
 	}
-	public String getTopic() {
-		return Topic;
+	public String getKeyword() {
+		return Keyword;
 	}
-	public void setTopic(String topic) {
-		Topic = topic;
+	public void setKeyword(String keyword) {
+		Keyword = keyword;
 	}
 	public Float getSentiment() {
 		return Sentiment;

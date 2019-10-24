@@ -1,10 +1,15 @@
 package com.example.neo4j.demoNeo4j.Controller;
 
 import java.util.Collection;
+import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -45,10 +50,26 @@ public class TopicController {
        return ts.getIndiaData();
 	}
 	
-	@RequestMapping(value="/abc",method = RequestMethod.GET)
+	@RequestMapping(value="/avgSentiment",method = RequestMethod.GET)
 	@ResponseBody
-	 public Iterable<Topic> getAll() {
-       return ts.getAll();
+	 public Double averageSentiment() {
+       return ts.averageSentiment();
 	}
 	
-}
+	@RequestMapping(value="/descDates",method = RequestMethod.GET)
+	@ResponseBody
+	 public List<Map<String, Object>> customdata() {
+       return ts.customData();
+	}
+	
+	@GetMapping("/data")
+	public String getData(@RequestParam("startDate") String startDate,@RequestParam("endDate") String endDate) {
+		return "Some";
+	}
+	
+	@GetMapping("/getDataByKeyword/{topic}/{country}/{source}/{keyword}")
+	public List<Map<String, Object>> getDataByKeyword(@PathVariable(value = "topic") String topic,@PathVariable(value = "country") String country,@PathVariable(value = "source") String source,@PathVariable(value = "keyword") String keyword){
+		return ts.getDataByKeyword(topic, country, source, keyword);
+	}
+	
+} 

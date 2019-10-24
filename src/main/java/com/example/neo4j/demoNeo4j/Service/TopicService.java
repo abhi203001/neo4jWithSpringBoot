@@ -1,6 +1,9 @@
 package com.example.neo4j.demoNeo4j.Service;
 
 import java.util.Collection;
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,8 +35,16 @@ public class TopicService {
 		return tr.getAllIndiaData();
 	}
 	
-	public Iterable<Topic> getAll() {
-		return tr.findAll();
+	public Double averageSentiment(){
+		return tr.averageSentiment();
+	}
+	
+	public List<Map<String, Object>> customData() {
+		return tr.customData();
+	}
+	
+	public List<Map<String, Object>> getDataByKeyword(String topic, String country, String source, String keyword){
+		return tr.getDataByKeyword(topic, country, source, keyword);
 	}
 
 }
